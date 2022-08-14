@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.DetailFragment">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/headerImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="H"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="244dp"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setImage="@{detailItem.pixBayItem.largeImageURL}" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/userTextView"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="16dp"
+            android:text="@{detailItem.pixBayItem.user}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headerImageView"
+            tools:text="Has 40 likes" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/likesTextView"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="16dp"
+            android:text="@{`Has ` + detailItem.pixBayItem.likes + ` likes.`}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userTextView"
+            tools:text="Has 40 likes" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/commentsTextView"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="16dp"
+            android:text="@{`Has ` + detailItem.pixBayItem.comments + ` comments.`}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/likesTextView"
+            tools:text="Has 40 comments" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/downloadsTextView"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="16dp"
+            android:text="@{`Has ` + detailItem.pixBayItem.downloads + ` downloads.`}"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentsTextView"
+            tools:text="Has 40 downloads" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="detailItem"
+            type="com.pixabay.ui.home.PixBayUiListItem" />
+    </data>
+
+</layout>

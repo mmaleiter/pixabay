@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:onClick="@{() -> listener.onImageDataClicked(pixaBayItem)}"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="96dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/previewImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{pixaBayItem.pixBayItem.previewURL}"
+                tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/favouriteImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:onClick="@{() -> listener.onFavouriteClicked(pixaBayItem)}"
+                android:padding="16dp"
+                android:src="@drawable/ic_favorite_border"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setFavouriteCondition="@{pixaBayItem.favourite}" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tagsTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:text="@{pixaBayItem.pixBayItem.tags}"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/favouriteImageView"
+                app:layout_constraintStart_toEndOf="@+id/previewImageView"
+                tools:text="The Shawshank Redemption" />
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/nameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{pixaBayItem.pixBayItem.user}"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/favouriteImageView"
+                app:layout_constraintStart_toStartOf="@+id/tagsTextView"
+                app:layout_constraintTop_toTopOf="@+id/previewImageView"
+                tools:text="Hans Wurst" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <data>
+        <variable
+            name="pixaBayItem"
+            type="com.pixabay.ui.home.PixBayUiListItem" />
+
+        <variable
+            name="listener"
+            type="com.pixabay.ui.home.MovieListener" />
+    </data>
+
+</layout>
